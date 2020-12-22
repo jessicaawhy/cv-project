@@ -1,0 +1,107 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+#root {
+  margin: 50px auto;
+  width: 75%;
+}
+
+.app {
+  display: grid;
+  grid-template: 1fr / 1fr 2fr;
+}
+
+.sidebar {
+  grid-area: 1 / 1 / 2 / 2;
+  margin-right: 50px;
+}
+
+.main {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+/* header */
+
+.header {
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+.header .title {
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.header .desc {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+/* contact */
+
+.contact {
+  margin-bottom: 25px;
+}
+
+.contact-item {
+  margin: 10px 0;
+}
+
+.contact-item > h2 {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.contact-item > p {
+  font-size: 15px;
+}
+
+/* skills */
+
+.skills > h2 {
+  list-style: none;
+  font-weight: 700;
+  font-size: 15px;
+  margin: 15px 0;
+}
+
+.skills > li {
+  list-style: none;
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+/* education */
+
+.main {
+  margin-left: 50px;
+}
+
+.education,
+.experience {
+  margin-bottom: 35px;
+}
+
+.education > h2,
+.experience > h2 {
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.exp-item,
+.ed-item {
+  display: grid;
+  grid-template: 1fr / 1fr 2fr;
+  margin: 20px 0;
+}
+
+.job-desc {
+  margin-top: 15px
+}
+

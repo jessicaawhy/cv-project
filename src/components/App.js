@@ -14,12 +14,10 @@ class App extends React.Component {
     },
 
     contact: {
-      address1: '123 Address Lane',
-      address2: 'City, State, ZIP',
-      phone: '555-555-555',
-      email: 'yourname@website.com',
-      website: 'website.com',
-      linkedIn: '@linkedin.com/in/your-name',
+      item1: {phone: '555-555-555'},
+      item2: {email: 'yourname@website.com'},
+      item3: {website: 'website.com'},
+      item4: {linkedIn: 'linkedin.com/in/your-name'},
     },
 
     skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4'],
@@ -31,7 +29,6 @@ class App extends React.Component {
         start: 'Sept 2012',
         end: 'May 2016',
         location: 'Location, State',
-        gpa: '3.5',
       },
       {
         school: 'Second University',
@@ -39,13 +36,13 @@ class App extends React.Component {
         start: 'Sept 2016',
         end: 'May 2018',
         location: 'Location, State',
-        gpa: '3.8',
       },
     ],
 
     experience: [
       {
         company: 'First Company',
+        title: 'First Job Title',
         start: 'July 2018',
         end: 'August 2019',
         location: 'Location, State',
@@ -53,6 +50,7 @@ class App extends React.Component {
       },
       {
         company: 'Second Company',
+        title: 'Second Job Title',
         start: 'October 2019',
         end: 'Present',
         location: 'Location, State',
@@ -63,26 +61,30 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="cv-app">
+      <div className="app">
 
-        <main>
-          <Header details={this.state.header} />
-        </main>
-
-        <sidebar>
-          <Contact details={this.state.contact} />
-          <ul>
-            <h2>Skills</h2>
+        <div className="sidebar">
+          <Header className="header" details={this.state.header}/>
+          
+          <div className="contact">
+            {Object.keys(this.state.contact).map(key => <Contact key={key} details={this.state.contact[key]}/>)}
+          </div>
+          
+          <h2>SKILLS</h2>
+          <ul className="skills">
             {this.state.skills.map(current => <Skills details={current}/>)}
           </ul>
-        </sidebar>
-       
-        <div>
-          {this.state.education.map(current => <Education details={current}/>)}
         </div>
        
-        <div>
-          {this.state.experience.map(current => <Experience details={current}/>)}
+        <div className="main">
+          <div className="education">
+            <h2>Education</h2>
+            {this.state.education.map(current => <Education details={current}/>)}
+          </div>
+          <div className="experience">
+            <h2>Experience</h2>
+            {this.state.experience.map(current => <Experience details={current}/>)}
+          </div>
         </div>
 
       </div>

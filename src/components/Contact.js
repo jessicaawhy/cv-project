@@ -2,16 +2,12 @@ import React from 'react';
 
 class Contact extends React.Component {
   render() {
+    let header = Object.keys(this.props.details)[0];
+    let item = Object.values(this.props.details)[0];
     return (
-      <div>
-        <div className="normal-view">
-          <p>{this.props.details.address1}</p>
-          <p>{this.props.details.address2}</p>
-          <p>{this.props.details.phone}</p>
-          <p>{this.props.details.email}</p>
-          <p>{this.props.details.website}</p>
-          <p>{this.props.details.linkedIn}</p>
-        </div>
+      <div className="contact-item">
+        <h2>{header}</h2>
+        <p>{item}</p>
       </div>
     )
   }
