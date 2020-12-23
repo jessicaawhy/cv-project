@@ -21,7 +21,9 @@ class Section extends React.Component {
       <div className="section">
         <div className="header">
           <h2>{this.props.item.toUpperCase()}</h2>
-          <button>add</button>
+          <div className="btn-container">
+            <button>edit</button>
+          </div>
         </div>
         <ul className={this.props.item}>
           {Object.keys(this.props.details).map(key => <Tag key={key} details={this.props.details[key]}/>)}

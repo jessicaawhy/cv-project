@@ -45,7 +45,7 @@ class App extends React.Component {
       item1: {
         company: 'Second Company',
         title: 'Second Job Title',
-        start: 'October 2019',
+        start: 'Oct 2019',
         end: 'Present',
         location: 'Location, State',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -54,7 +54,7 @@ class App extends React.Component {
         company: 'First Company',
         title: 'First Job Title',
         start: 'July 2018',
-        end: 'August 2019',
+        end: 'Aug 2019',
         location: 'Location, State',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       },
@@ -64,14 +64,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <Introduction className="introduction section" details={this.state.header}/>
         <div className="sidebar">
-          <Introduction className="section" details={this.state.header}/>
           <Section className="contact" item="contact" details={this.state.contact}/>
           <Section item="skills" details={this.state.skills}/>
         </div>
         <div className="main">
-          <Section item="education" details={this.state.education}/>
-          <Section item="experience" details={this.state.experience}/>
+          <Section className="education" item="education" details={this.state.education}/>
+          <Section className="experience" item="experience" details={this.state.experience}/>
         </div>
       </div>
     );
