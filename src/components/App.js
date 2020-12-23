@@ -4,10 +4,19 @@ import Section from './Section';
 
 class App extends React.Component {
   state = {
-    header: {
-      name: 'Your Name',
-      title: 'Your Title',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    introduction: {
+      name: {
+        data: 'Your Name',
+        editing: false,
+      },
+      title: {
+        data: 'Your Title',
+        editing: false,
+      },
+      desc: {
+        data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        editing: false,
+      }
     },
 
     contact: {
@@ -61,10 +70,16 @@ class App extends React.Component {
     },
   }
 
+  saveState = (parent, obj) => {
+
+
+    this.setState({[parent]: obj});
+  }
+
   render() {
     return (
       <div className="app">
-        <Introduction className="introduction section" details={this.state.header}/>
+        <Introduction className="introduction section" details={this.state.introduction} saveState={this.saveState}/>
         <div className="sidebar">
           <Section className="contact" item="contact" details={this.state.contact}/>
           <Section item="skills" details={this.state.skills}/>

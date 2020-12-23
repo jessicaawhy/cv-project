@@ -22,7 +22,7 @@ class Section extends React.Component {
         <div className="header">
           <h2>{this.props.item.toUpperCase()}</h2>
           <div className="btn-container">
-            <button>edit</button>
+            <button>Add</button>
           </div>
         </div>
         <ul className={this.props.item}>
