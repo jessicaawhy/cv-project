@@ -1,20 +1,37 @@
 import React from 'react';
+import RenderEducation from './RenderEducation';
 
 class Education extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.props.sectionObj;
+  }
+
   render() {
-    const { school, degree, start, end, location } = this.props.details;
     return (
-      <li className="item">
-        <div className="first">
-          <p className="dates">{start}{" - "}{end}</p>
-          <p className="degree">{degree}</p>
+      <div className="section">
+
+        <div className="header">
+          <h2>{this.props.section.toUpperCase()}</h2>
+          <div className="btn-container">
+            <button>Add</button>
+          </div>
         </div>
 
-        <div className="second">
-          <p className="school">{school}</p>
-          <p className="location">{location}</p>
-        </div>
-      </li>
+        <ul className={this.props.section}>
+          {Object.keys(this.state).map(
+            key => <RenderEducation
+              key={key}
+              section={this.props.section}
+              itemKey={key}
+              itemObj={this.state[key]}
+              enableEdit={this.props.enableEdit}
+              handleEdit={this.props.handleEdit}
+            />
+          )}
+        </ul>
+
+      </div>
     )
   }
 }

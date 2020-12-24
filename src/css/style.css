@@ -89,22 +89,23 @@ li {
   margin: 10px;
 }
 
-#bio {
+#person-text {
   margin-left: 40px;
   align-self: center;
 }
 
-#introduction h1 {
-  font-size: 40px;
-  margin: 5px 10px;
+#person-name > * {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-.person-title {
+#person-title > * {
   font-size: 25px;
   margin: 10px;
 }
 
-.person-desc {
+#person-desc > * {
   font-size: 15px;
   margin: 10px;
 }
@@ -146,4 +147,8 @@ li {
 
 .job-desc {
   margin-top: 15px
+}
+
+.dates {
+  display: flex;
 }

@@ -1,21 +1,37 @@
 import React from 'react';
+import RenderExperience from './RenderExperience';
 
 class Experience extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.props.sectionObj;
+  }
+
   render() {
-    const { company, title, start, end, location, desc } = this.props.details;
     return (
-      <li className="item">
-        <div className="first">
-          <p className="dates">{start}{" - "}{end}</p>
-          <p className="title">{title}</p>
+      <div className="section">
+
+        <div className="header">
+          <h2>{this.props.section.toUpperCase()}</h2>
+          <div className="btn-container">
+            <button>Add</button>
+          </div>
         </div>
-        
-        <div className="second">
-          <p className="company">{company}</p>
-          <p className="location">{location}</p>
-          <p className="job-desc">{desc}</p>
-        </div>
-      </li>
+
+        <ul className={this.props.section}>
+          {Object.keys(this.state).map(
+            key => <RenderExperience
+              key={key}
+              section={this.props.section}
+              itemKey={key}
+              itemObj={this.state[key]}
+              enableEdit={this.props.enableEdit}
+              handleEdit={this.props.handleEdit}
+            />
+          )}
+        </ul>
+
+      </div>
     )
   }
 }

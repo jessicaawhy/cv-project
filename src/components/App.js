@@ -1,92 +1,104 @@
 import React from 'react';
 import Introduction from './Introduction';
-import Section from './Section';
+import Contact from './Contact';
+import Skills from './Skills';
+import Education from './Education';
+import Experience from './Experience';
+import sample from '../sample-data';
 
 class App extends React.Component {
-  state = {
-    introduction: {
-      name: {
-        data: 'Your Name',
-        editing: false,
-      },
-      title: {
-        data: 'Your Title',
-        editing: false,
-      },
-      desc: {
-        data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        editing: false,
-      }
-    },
+  state = sample;
 
-    contact: {
-      item1: {phone: '555-555-555'},
-      item2: {email: 'yourname@website.com'},
-      item3: {website: 'website.com'},
-      item4: {linkedIn: 'linkedin.com/in/your-name'},
-    },
+  enableEdit = (e) => {
+    const section = e.target.dataset.section;
+    const key1 = e.target.dataset.key1;
+    const key2 = e.target.dataset.key2;
 
-    skills:  {
-      item1: 'Skill 1',
-      item2: 'Skill 2',
-      item3: 'Skill 3',
-      item4: 'Skill 4',
-    },
+    const sectionObj = {...this.state[section]};
 
-    education: {
-      item1: {
-        school: 'Second University',
-        degree: 'M.S. in Second Degree',
-        start: 'Sept 2016',
-        end: 'May 2018',
-        location: 'Location, State',
-      },
-      item2: {
-        school: 'First University',
-        degree: 'B.S. in First Degree',
-        start: 'Sept 2012',
-        end: 'May 2016',
-        location: 'Location, State',
-      },
-    },
+    if (key1 && key2) {
+      sectionObj[key1][key2]['editing'] = true;
+    } else {
+      sectionObj[key1]['editing'] = true;
+    }
 
-    experience: {
-      item1: {
-        company: 'Second Company',
-        title: 'Second Job Title',
-        start: 'Oct 2019',
-        end: 'Present',
-        location: 'Location, State',
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      },
-      item2: {
-        company: 'First Company',
-        title: 'First Job Title',
-        start: 'July 2018',
-        end: 'Aug 2019',
-        location: 'Location, State',
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      },
-    },
+    this.setState({section: sectionObj});
   }
 
-  saveState = (parent, obj) => {
+  handleEdit = (e) => {
+    const section = e.target.dataset.section;
+    const key1 = e.target.dataset.key1;
+    const key2 = e.target.dataset.key2;
 
+    const sectionObj = {...this.state[section]};
 
-    this.setState({[parent]: obj});
+    if ((e.key === 'Enter' || e.type === 'blur')) {
+      if (e.target.value === '') {
+        alert('Please prove a value!');
+        this.disableEdit(section, key1, key2);
+      } else if (key1 && key2) {
+        sectionObj[key1][key2]['data'] = e.target.value;
+      } else {
+        sectionObj[key1]['data'] = e.target.value;
+      }
+
+      this.setState({section: sectionObj});
+      this.disableEdit(section, key1, key2);
+
+    } else if (e.key === 'Escape') {
+      this.disableEdit(section, key1, key2);
+    }
+  }
+
+  disableEdit = (section, key1, key2) => {
+    const sectionObj = {...this.state[section]};
+    if (key1 && key2) {
+      sectionObj[key1][key2]['editing'] = false;
+    } else {
+      sectionObj[key1]['editing'] = false;
+    }
+    this.setState({section: sectionObj});
   }
 
   render() {
     return (
       <div className="app">
-        <Introduction className="introduction section" details={this.state.introduction} saveState={this.saveState}/>
+
+        <Introduction 
+          section="introduction" 
+          sectionObj={this.state.introduction} 
+          enableEdit={this.enableEdit} 
+          handleEdit={this.handleEdit}
+        />
+        
         <div className="sidebar">
-          <Section className="contact" item="contact" details={this.state.contact}/>
-          <Section item="skills" details={this.state.skills}/>
+          <Contact 
+            section="contact" 
+            sectionObj={this.state.contact} 
+            enableEdit={this.enableEdit} 
+            handleEdit={this.handleEdit}
+          />
+          <Skills 
+            section="skills" 
+            sectionObj={this.state.skills} 
+            enableEdit={this.enableEdit} 
+            handleEdit={this.handleEdit}
+          />
         </div>
+
         <div className="main">
-          <Section className="education" item="education" details={this.state.education}/>
-          <Section className="experience" item="experience" details={this.state.experience}/>
+          <Education 
+            section="education" 
+            sectionObj={this.state.education} 
+            enableEdit={this.enableEdit} 
+            handleEdit={this.handleEdit}
+          />
+          <Experience 
+            section="experience" 
+            sectionObj={this.state.experience} 
+            enableEdit={this.enableEdit} 
+            handleEdit={this.handleEdit}
+          />
         </div>
       </div>
     );
