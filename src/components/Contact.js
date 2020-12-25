@@ -1,39 +1,23 @@
 import React from 'react';
-import RenderContact from './RenderContact';
+import ToggleTagInput from './ToggleTagInput'
 
-class Contact extends React.Component {
+class Contacts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.sectionObj;
+    this.state = this.props.contactItem;
   }
 
   render() {
+    const title = Object.keys(this.state)[0];
+    const value = Object.values(this.state)[0];
+
     return (
-      <div className="section">
-
-        <div className="header">
-          <h2>{this.props.section.toUpperCase()}</h2>
-          <div className="btn-container">
-            <button>Add</button>
-          </div>
-        </div>
-
-        <ul className={this.props.section}>
-          {Object.keys(this.state).map(
-            key => <RenderContact 
-              key={key}
-              section={this.props.section}
-              itemKey={key}
-              itemObj={this.state[key]}
-              enableEdit={this.props.enableEdit}
-              handleEdit={this.props.handleEdit}
-            />
-          )}
-        </ul>
-
+      <div>
+        <ToggleTagInput item={title} />
+        <ToggleTagInput item={value} />
       </div>
     )
   }
 }
 
-export default Contact;
+export default Contacts;

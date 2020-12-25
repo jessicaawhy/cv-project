@@ -1,18 +1,18 @@
 import React from 'react';
-import ToggleTagInput from './ToggleTagInput'
+import Contact from './Contact'
 
-class Skills extends React.Component {
+class Contacts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.skills;
+    this.state = this.props.contacts;
   }
 
   render() {
     return (
-      <div id="skills">
+      <div className="contacts">
 
         <div className="header">
-          <h2>SKILLS</h2>
+          <h2>CONTACTS</h2>
           <div className="btn-container">
             <button>Add</button>
           </div>
@@ -20,7 +20,7 @@ class Skills extends React.Component {
 
         <ul>
           {Object.keys(this.state).map(
-            key => <ToggleTagInput key={key} item={this.state[key]}/>
+            key => <Contact key={key} contactItem={this.state[key]} />
           )}
         </ul>
 
@@ -29,4 +29,4 @@ class Skills extends React.Component {
   }
 }
 
-export default Skills;
+export default Contacts;
