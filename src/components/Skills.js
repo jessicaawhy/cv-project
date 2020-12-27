@@ -4,7 +4,13 @@ import ToggleTagInput from './ToggleTagInput'
 class Skills extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.skills;
+    this.state = {skills: this.props.skills};
+  }
+
+  addSkill = () => {
+    const skills = {...this.state.skills};
+    skills[`skill${Date.now()}`] = 'New Skill!'
+    this.setState({skills})
   }
 
   render() {
@@ -14,13 +20,13 @@ class Skills extends React.Component {
         <div className="header">
           <h2>SKILLS</h2>
           <div className="btn-container">
-            <button>Add</button>
+            <button onClick={this.addSkill}>Add</button>
           </div>
         </div>
 
         <ul>
-          {Object.keys(this.state).map(
-            key => <ToggleTagInput key={key} item={this.state[key]}/>
+          {Object.keys(this.state.skills).map(
+            key => <ToggleTagInput key={key} item={this.state.skills[key]}/>
           )}
         </ul>
 
