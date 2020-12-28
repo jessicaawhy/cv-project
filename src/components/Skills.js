@@ -1,18 +1,7 @@
 import React from 'react';
-import ToggleTagInput from './ToggleTagInput'
+import Skill from './Skill'
 
 class Skills extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {skills: this.props.skills};
-  }
-
-  addSkill = () => {
-    const skills = {...this.state.skills};
-    skills[`skill${Date.now()}`] = 'New Skill!'
-    this.setState({skills})
-  }
-
   render() {
     return (
       <div id="skills">
@@ -20,13 +9,13 @@ class Skills extends React.Component {
         <div className="header">
           <h2>SKILLS</h2>
           <div className="btn-container">
-            <button onClick={this.addSkill}>Add</button>
+            <button onClick={() => this.props.addSkill('skills')}>Add</button>
           </div>
         </div>
 
         <ul>
-          {Object.keys(this.state.skills).map(
-            key => <ToggleTagInput key={key} item={this.state.skills[key]}/>
+          {Object.keys(this.props.skills).map(
+            key => <Skill key={key} skillKey={key} skillItem={this.props.skills[key]} deleteSkill={this.props.deleteSkill}/>
           )}
         </ul>
 

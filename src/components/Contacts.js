@@ -2,11 +2,6 @@ import React from 'react';
 import Contact from './Contact'
 
 class Contacts extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props.contacts;
-  }
-
   render() {
     return (
       <div className="contacts">
@@ -19,8 +14,8 @@ class Contacts extends React.Component {
         </div>
 
         <ul>
-          {Object.keys(this.state).map(
-            key => <Contact key={key} contactItem={this.state[key]} />
+          {Object.keys(this.props.contacts).map(
+            key => <Contact key={key} contactItem={this.props.contacts[key]} />
           )}
         </ul>
 

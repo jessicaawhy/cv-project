@@ -9,6 +9,23 @@ import sample from '../sample-data';
 class App extends React.Component {
   state = sample;
 
+  add = (section) => {
+    const sectionObj = {...this.state[section]};
+
+    if (section === 'skills') {
+      sectionObj[`skill${Date.now()}`] = 'New Skill!';
+    }
+
+    this.setState({[section]: sectionObj});
+  }
+
+  delete = (section, key) => {
+    const sectionObj = {...this.state[section]};
+    delete sectionObj[key];
+
+    this.setState({[section]: sectionObj});
+  }
+
   render() {
     return (
       <div className="app">
@@ -17,7 +34,7 @@ class App extends React.Component {
         
         <div className="sidebar">
           <Contacts contacts={this.state.contacts} />
-          <Skills skills={this.state.skills} />
+          <Skills skills={this.state.skills} addSkill={this.add} deleteSkill={this.delete}/>
         </div>
 
         <div className="main">
