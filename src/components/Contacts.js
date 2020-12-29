@@ -9,13 +9,19 @@ class Contacts extends React.Component {
         <div className="header">
           <h2>CONTACTS</h2>
           <div className="btn-container">
-            <button>Add</button>
+            <button onClick={this.props.addContact}>Add</button>
           </div>
         </div>
 
         <ul>
-          {Object.keys(this.props.contacts).map(
-            key => <Contact key={key} contactItem={this.props.contacts[key]} />
+          {Object.keys(this.props.contacts)
+            .map(key => 
+              <Contact 
+                key={key} 
+                contactKey={key} 
+                contactItem={this.props.contacts[key]} 
+                deleteContact={this.props.deleteContact} 
+              />
           )}
         </ul>
 

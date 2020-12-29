@@ -9,13 +9,19 @@ class Skills extends React.Component {
         <div className="header">
           <h2>SKILLS</h2>
           <div className="btn-container">
-            <button onClick={() => this.props.addSkill('skills')}>Add</button>
+            <button onClick={this.props.addSkill}>Add</button>
           </div>
         </div>
 
         <ul>
-          {Object.keys(this.props.skills).map(
-            key => <Skill key={key} skillKey={key} skillItem={this.props.skills[key]} deleteSkill={this.props.deleteSkill}/>
+          {Object.keys(this.props.skills)
+            .map(key => 
+              <Skill 
+                key={key} 
+                skillKey={key} 
+                skillItem={this.props.skills[key]} 
+                deleteSkill={this.props.deleteSkill} 
+              />
           )}
         </ul>
 

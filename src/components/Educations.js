@@ -2,11 +2,6 @@ import React from 'react';
 import Education from './Education'
 
 class Educations extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props.educations;
-  }
-
   render() {
     return (
       <div className="education">
@@ -14,13 +9,19 @@ class Educations extends React.Component {
         <div className="header">
           <h2>EDUCATION</h2>
           <div className="btn-container">
-            <button>Add</button>
+            <button onClick={this.props.addEd}>Add</button>
           </div>
         </div>
 
         <ul>
-          {Object.keys(this.state).map(
-            key => <Education key={key} educationItem={this.state[key]} />
+          {Object.keys(this.props.educations)
+            .map(key => 
+              <Education 
+                key={key} 
+                edKey={key} 
+                edItem={this.props.educations[key]} 
+                deleteEd={this.props.deleteEd} 
+              />
           )}
         </ul>
 

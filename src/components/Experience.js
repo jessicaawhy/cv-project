@@ -2,13 +2,9 @@ import React from 'react';
 import ToggleTagInput from './ToggleTagInput'
 
 class Experience extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props.experienceItem;
-  }
-
   render() {
-    const { company, title, start, end, location, desc } = this.state;
+    const expKey = this.props.expKey;
+    const { company, title, start, end, location, desc } = this.props.expItem;
 
     return (
       <div>
@@ -18,6 +14,7 @@ class Experience extends React.Component {
         <ToggleTagInput item={end} />
         <ToggleTagInput item={location} />
         <ToggleTagInput item={desc} type="desc" />
+        <span onClick={() => this.props.deleteExp('experiences', expKey)}>x</span>
       </div>
     )
   }

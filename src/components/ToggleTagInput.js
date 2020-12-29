@@ -34,19 +34,19 @@ class RenderExperience extends React.Component {
     return (
       this.state.editing
       ? <EditTag
-        id={this.props.id}
-        className={this.props.className}
-        onBlur={this.handleEdit}
-        onKeyDown={this.handleEdit}
-        autoFocus
-        defaultValue={this.state.value}>
-      </EditTag>
+          id={this.props.id} 
+          className={this.props.className} 
+          onBlur={this.handleEdit} 
+          onKeyDown={this.handleEdit} 
+          autoFocus 
+          defaultValue={this.state.value} >
+        </EditTag>
       : <p
-        id={this.props.id}
-        className={this.props.className}
-        onClick={this.toggleStatus}>
-        {this.state.value}
-      </p>  
+          id={this.props.id} 
+          className={this.props.className} 
+          onClick={this.toggleStatus} >
+          {this.state.value}
+        </p>  
     )
   }
 }
