@@ -8,10 +8,14 @@ class Contact extends React.Component {
     const value = Object.values(this.props.contactItem)[0];
 
     return (
-      <div>
-        <ToggleTagInput item={title} />
-        <ToggleTagInput item={value} />
-        <span onClick={() => this.props.deleteContact('contacts', contactKey)}>x</span>
+      <div className="contact-item">
+        <div className="first">
+          <ToggleTagInput item={title} />
+          <ToggleTagInput item={value} />
+        </div>
+        <div className="second">
+          <span className="delete-button" onClick={() => this.props.deleteContact('contacts', contactKey)}>x</span>
+        </div>
       </div>
     )
   }

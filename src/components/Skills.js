@@ -4,13 +4,11 @@ import Skill from './Skill'
 class Skills extends React.Component {
   render() {
     return (
-      <div id="skills">
+      <div className="section">
 
         <div className="header">
           <h2>SKILLS</h2>
-          <div className="btn-container">
-            <button onClick={this.props.addSkill}>Add</button>
-          </div>
+          <span className="add-button" onClick={this.props.addSkill}>+</span>
         </div>
 
         <ul>

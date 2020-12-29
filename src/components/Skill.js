@@ -7,9 +7,13 @@ class Skill extends React.Component {
     const value = this.props.skillItem;
 
     return (
-      <div>
-        <ToggleTagInput item={value} />
-        <span onClick={() => this.props.deleteSkill('skills', skillKey)}>x</span>
+      <div className="skill-item">
+        <div className="first">
+          <ToggleTagInput item={value} />
+        </div>
+        <div className="second">
+          <span className="delete-button" onClick={() => this.props.deleteSkill('skills', skillKey)}>x</span>
+        </div>
       </div>
     )
   }

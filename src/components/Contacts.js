@@ -4,13 +4,11 @@ import Contact from './Contact'
 class Contacts extends React.Component {
   render() {
     return (
-      <div className="contacts">
+      <div className="section">
 
         <div className="header">
           <h2>CONTACTS</h2>
-          <div className="btn-container">
-            <button onClick={this.props.addContact}>Add</button>
-          </div>
+          <span className="add-button" onClick={this.props.addContact}>+</span>
         </div>
 
         <ul>

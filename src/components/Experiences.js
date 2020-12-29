@@ -4,13 +4,11 @@ import Experience from './Experience'
 class Experiences extends React.Component {
   render() {
     return (
-      <div className="experience">
+      <div className="section">
 
         <div className="header">
           <h2>EXPERIENCE</h2>
-          <div className="btn-container">
-            <button onClick={this.props.addExp}>Add</button>
-          </div>
+          <span className="add-button" onClick={this.props.addExp}>+</span>
         </div>
 
         <ul>

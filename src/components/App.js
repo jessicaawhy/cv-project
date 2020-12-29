@@ -11,14 +11,14 @@ class App extends React.Component {
 
   addSkill = () => {
     const skills = {...this.state.skills};
-    skills[`skills${Date.now()}`] = 'New Skill';
+    skills[`skills${Date.now()}`] = 'Skill';
     this.setState({skills});
   }
 
   addContact = () => {
     const contacts = {...this.state.contacts};
     contacts[`contacts${Date.now()}`] = {
-      'type': 'value'
+      'type': 'contact'
     }
     this.setState({contacts});
   }

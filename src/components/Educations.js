@@ -4,13 +4,11 @@ import Education from './Education'
 class Educations extends React.Component {
   render() {
     return (
-      <div className="education">
+      <div className="section">
 
         <div className="header">
           <h2>EDUCATION</h2>
-          <div className="btn-container">
-            <button onClick={this.props.addEd}>Add</button>
-          </div>
+          <span className="add-button" onClick={this.props.addEd}>+</span>
         </div>
 
         <ul>

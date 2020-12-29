@@ -40,16 +40,13 @@ body {
   padding: 20px;
 }
 
-li {
-  list-style: none;
-}
 
 .section {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
-.btn-container {
-  display: none;
+li {
+  list-style: none;
 }
 
 .header {
@@ -68,9 +65,13 @@ li {
   flex-direction: row-reverse;
 }
 
-.header:hover .btn-container {
+.header:hover .add-button {
   display: flex;
   align-items: center;
+}
+
+.add-button {
+  display: none;
 }
 
 /* introduction */
@@ -104,6 +105,7 @@ li {
   font-size: 25px;
   margin: 10px;
 }
+
 #person-text > .desc {
   font-size: 15px;
   margin: 10px;
@@ -111,43 +113,69 @@ li {
 
 /* sidebar */
 
-.contact .item {
-  margin: 10px;
+.contact-item,
+.skill-item {
+  display: grid;
+  grid-template: 1fr / 1fr 20px;
+  margin: 10px 0px 10px 30px;
 }
 
-.skills .item {
-  margin: 10px;
+.contact-item .first,
+.skill-item .first {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.contact-item .second,
+.skill-item .second {
+  grid-area: 1 / 2 / 2 / 3;
+  display: none;
+}
+
+.contact-item:hover .second,
+.skill-item:hover .second {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact-item p:first-child {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 /* main */
 
-.education .item,
-.experience .item  {
-  display: grid;
-  grid-template: 1fr / 1fr 2fr;
-  margin: 15px 30px
+.dates {
+  display: flex;
 }
 
-.first {
+.dates > span {
+  margin: 0 5px;
+}
+
+.ed-item,
+.exp-item  {
+  display: grid;
+  grid-template: 1fr / 1fr 2fr 30px;
+  margin: 10px 0px 10px 30px;
+}
+
+.ed-item .first,
+.exp-item .first {
   grid-area: 1 / 1 / 2 / 2;
 }
 
-.second {
+.ed-item .second,
+.exp-item .second {
   grid-area: 1 / 2 / 2 / 3;
 }
 
-.first > * {
-  margin: 5px;
+.third {
+  grid-area: 1 / 3 / 2 / 4;
+  display: none;
+  justify-content: flex-end;
 }
 
-.second > * {
-  margin: 5px;
-}
-
-.job-desc {
-  margin-top: 15px
-}
-
-.dates {
+.ed-item:hover .third,
+.exp-item:hover .third {
   display: flex;
 }
