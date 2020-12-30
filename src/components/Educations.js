@@ -1,31 +1,27 @@
 import React from 'react';
 import Education from './Education'
 
-class Educations extends React.Component {
-  render() {
-    return (
-      <div className="section">
+const Educations = (props) => (
+  <div className="section">
 
-        <div className="header">
-          <h2>EDUCATION</h2>
-          <span className="add-button" onClick={this.props.addEd}>+</span>
-        </div>
+    <div className="header">
+      <h2>EDUCATION</h2>
+      <span className="add-button" onClick={props.addEd}>+</span>
+    </div>
 
-        <ul>
-          {Object.keys(this.props.educations)
-            .map(key => 
-              <Education 
-                key={key} 
-                edKey={key} 
-                edItem={this.props.educations[key]} 
-                deleteEd={this.props.deleteEd} 
-              />
-          )}
-        </ul>
+    <ul>
+      {Object.keys(props.educations)
+        .map(key => 
+          <Education 
+            key={key} 
+            edKey={key} 
+            edItem={props.educations[key]} 
+            deleteEd={props.deleteEd} 
+          />
+      )}
+    </ul>
 
-      </div>
-    )
-  }
-}
+  </div>
+)
 
 export default Educations;
