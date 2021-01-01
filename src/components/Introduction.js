@@ -1,13 +1,10 @@
 import React from 'react';
-import ToggleTagInput from './ToggleTagInput'
+import ToggleTagInput from './ToggleTagInput';
+import TogglePhotoInput from './TogglePhotoInput'
 
 const Introduction = (props) => (
   <div id="introduction">
-    <img 
-      id="portrait" 
-      src={props.intro.portrait} 
-      alt="profile-pic" 
-    />
+    <TogglePhotoInput item={props.intro.portrait} />
     <div id="person-text">
       <ToggleTagInput className="name" item={props.intro.name} />
       <ToggleTagInput className="title" item={props.intro.title} />
