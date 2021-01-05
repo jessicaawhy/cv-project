@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RenderExperience = props => {
+const ToggleTagInput = props => {
   const [ value, setValue ] = useState(props.item);
   const [ editing, setEditing ] = useState(false);
 
@@ -42,4 +42,4 @@ const RenderExperience = props => {
   )
 }
 
-export default RenderExperience;
+export default ToggleTagInput;

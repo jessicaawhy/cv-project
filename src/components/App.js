@@ -7,7 +7,7 @@ import Experiences from './Experiences';
 import sample from '../sample-data';
 
 const App = () => {
-  const [ state, setState] = useState(sample);
+  const [ state, setState ] = useState(sample);
 
   const addSkill = () => {
     const skills = {...state.skills};
